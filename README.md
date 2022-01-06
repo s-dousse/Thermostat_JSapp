@@ -12,8 +12,8 @@ You'll build, test-driving your code, a simple program to manage a thermostat. H
 - [x] You can increase the temperature with an `up` method
 - [x] You can decrease the temperature with a `down` method
 - [x] The _minimum possible temperature_ is 10 degrees
-- [ ] the _Power saving mode_ is _on by default_ but it can also be turned off
-- [ ] _If power saving mode is on_, the maximum temperature is 25 degrees
+- [x] the _Power saving mode_ is _on by default_ but it can also be turned off
+- [x] _If power saving mode is on_, the maximum temperature is 25 degrees
 - [ ] _If power saving mode is off_, the maximum temperature is 32 degrees
 - [ ] You can reset the temperature to 20 with a `reset` method
 - [ ] You can ask about the thermostat's _current energy usage_: < 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.

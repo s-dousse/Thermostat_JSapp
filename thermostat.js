@@ -2,6 +2,7 @@ class Thermostat {
   constructor() {
     this.temperature = 20;
     this.minimum_possible_temperature = 10;
+    this.switch = true;
   }
 
   getTemperature() {
@@ -17,6 +18,15 @@ class Thermostat {
       return "sorry you can't go below 10";
     } else {
       this.temperature -= 1;
+    }
+  }
+
+  setPowerSavingMode(value) {
+    this.switch = value
+    if (this.switch) {
+      return "PSM is now on, max temperature is 25";
+    } else {
+      return "PSM is now off, max temperature is no more 25"
     }
   }
 }
