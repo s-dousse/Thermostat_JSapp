@@ -17,4 +17,12 @@ describe("Thermostat", () => {
     thermostat.down();
     expect(thermostat.getTemperature()).toBe(21);
   });
+
+  it("minimum possible temperature is ", () => {
+    for (i = 0; i <= 10; i++) {
+      thermostat.down();
+    }
+    // console.log(thermostat.getTemperature()); // temperature = 10
+    expect(thermostat.down()).toMatch("sorry you can't go below 10");
+  });
 });
