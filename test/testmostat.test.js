@@ -51,11 +51,24 @@ describe("Thermostat", () => {
     );
   });
 
+  it("temperature can be above 25 (PSM off)", () => {
+    thermostat2.up();
+    expect(thermostat2.getTemperature()).toBe(26);
+  });
+
   it("has maximum possible temperature 32 (PSM off)", () => {
-    for (i = 0; i <= 6; i++) {
+    for (i = 0; i <= 5; i++) {
       thermostat2.up();
     }
     // console.log(thermostat2.up()); // temperature = 32
     expect(thermostat2.up()).toMatch("32 (max reached)");
+  });
+
+  it("has a reset method that reset the temperature to 20", () => {
+    thermostat.reset();
+    expect(thermostat.getTemperature()).toBe(20);
+
+    thermostat2.reset();
+    expect(thermostat2.getTemperature()).toBe(20);
   });
 });

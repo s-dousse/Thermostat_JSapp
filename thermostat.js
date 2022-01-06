@@ -28,6 +28,10 @@ class Thermostat {
     }
   }
 
+  reset() {
+    this.temperature = 20;
+  }
+
   setPowerSavingMode(value) {
     this.switch = value;
     if (this.switch) {
