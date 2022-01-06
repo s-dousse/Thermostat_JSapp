@@ -9,8 +9,8 @@
 You'll build, test-driving your code, a simple program to manage a thermostat. Here is the specification for the initial MVP of the program:
 
 - [x] The Thermostat starts with an initial temperature of 20 degrees
-- [ ] You can increase the temperature with an `up` method
-- [ ] You can decrease the temperature with a `down` method
+- [x] You can increase the temperature with an `up` method
+- [x] You can decrease the temperature with a `down` method
 - [ ] The _minimum possible temperature_ is 10 degrees
 - [ ] he _Power saving mode_ is _on by default_ but it can also be turned off
 - [ ] _If power saving mode is on_, the maximum temperature is 25 degrees
