@@ -1,0 +1,1 @@
+const Thermostat = require("../thermostat");
