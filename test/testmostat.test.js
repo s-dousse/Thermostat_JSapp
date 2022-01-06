@@ -19,7 +19,7 @@ describe("Thermostat", () => {
     expect(thermostat.getTemperature()).toBe(21);
   });
 
-  it("minimum possible temperature is ", () => {
+  it("has minimum possible temperature is 10", () => {
     for (i = 0; i <= 10; i++) {
       thermostat.down();
     }
@@ -31,15 +31,31 @@ describe("Thermostat", () => {
     expect(thermostat2.switch).toEqual(true);
   });
 
+  it("when Power saving mode is on, max temperature is 25", () => {
+    expect(thermostat2.setPowerSavingMode(true)).toMatch(
+      "PSM is now on, max temperature is 25"
+    );
+  });
+
+  it("has maximum possible temperature 25 (PSM on)", () => {
+    for (i = 0; i <= 4; i++) {
+      thermostat2.up();
+    }
+    // console.log(thermostat2.up()); // temperature = 25
+    expect(thermostat2.up()).toMatch("25 (max reached)");
+  });
+
   it("when Power saving mode is off, max temperature is no more 25", () => {
-    expect(thermostat.setPowerSavingMode(false)).toMatch(
+    expect(thermostat2.setPowerSavingMode(false)).toMatch(
       "PSM is now off, max temperature is no more 25"
     );
   });
 
-  it("when Power saving mode is on, max temperature is 25", () => {
-    expect(thermostat.setPowerSavingMode(true)).toMatch(
-      "PSM is now on, max temperature is 25"
-    );
+  it("has maximum possible temperature 32 (PSM off)", () => {
+    for (i = 0; i <= 6; i++) {
+      thermostat2.up();
+    }
+    // console.log(thermostat2.up()); // temperature = 32
+    expect(thermostat2.up()).toMatch("32 (max reached)");
   });
 });

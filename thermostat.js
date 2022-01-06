@@ -3,6 +3,7 @@ class Thermostat {
     this.temperature = 20;
     this.minimum_possible_temperature = 10;
     this.switch = true;
+    this.max = 25;
   }
 
   getTemperature() {
@@ -10,7 +11,13 @@ class Thermostat {
   }
 
   up() {
-    this.temperature++;
+    this.switch ? (this.max = 25) : (this.max = 32);
+
+    if (this.temperature < this.max) {
+      return this.temperature++;
+    } else {
+      return `${this.temperature} (max reached)`;
+    }
   }
 
   down() {
@@ -22,11 +29,13 @@ class Thermostat {
   }
 
   setPowerSavingMode(value) {
-    this.switch = value
+    this.switch = value;
     if (this.switch) {
+      this.maximum_possible_temperature = 25;
       return "PSM is now on, max temperature is 25";
     } else {
-      return "PSM is now off, max temperature is no more 25"
+      this.maximum_possible_temperature = 32;
+      return "PSM is now off, max temperature is no more 25";
     }
   }
 }
