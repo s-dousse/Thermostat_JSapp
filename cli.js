@@ -7,33 +7,31 @@ const thermostat = new Thermostat();
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: "Enter command > ",
 });
 
-rl.prompt();
+const ThermostatCLI = () => {
+  rl.question("Enter command > ", (line) => {
+    switch (line.trimEnd()) {
+      case "up":
+        console.log(thermostat.up());
+        break;
+      case "down":
+        console.log(thermostat.down());
+        break;
+      case "psm on":
+        thermostat.setPowerSavingMode(true);
+        break;
+      case "psm off":
+        thermostat.setPowerSavingMode(false);
+        break;
+      case "reset":
+        thermostat.reset();
+        break;
+      case "exit":
+    }
+    ThermostatCLI(); // recursive solution
+  });
+  // ThermostatCLI(); // INFINITE LOOP : "Enter command > " FLIKERING !!!
 
-rl.on("line", (line) => {
-  switch (line.trimEnd()) {
-    case "up":
-      console.log(thermostat.up());
-      // console.log(`Temperature is ${thermostat.getTemperature()}`);
-      break;
-    case "down":
-      console.log(thermostat.down());
-      // console.log(`Temperature is ${thermostat.getTemperature()}`);
-      break;
-    case "psm on":
-      thermostat.setPowerSavingMode(true);
-      // console.log(`Temperature  is ${thermostat.getTemperature()}`);
-      break;
-    case "psm off":
-      thermostat.setPowerSavingMode(false);
-      // console.log(`Temperature is ${thermostat.getTemperature()}`);
-      break;
-    case "reset":
-      thermostat.reset();
-      // console.log(`Temperature is ${thermostat.getTemperature()}`);
-      break;
-  }
-  rl.prompt();
-});
+
+ThermostatCLI();
