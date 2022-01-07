@@ -26,7 +26,7 @@ class Thermostat {
     if (this.temperature <= this.min) {
       return "sorry you can't go below 10";
     } else {
-      this.temperature -= 1;
+      return (this.temperature -= 1);
     }
   }
 

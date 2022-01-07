@@ -13,12 +13,27 @@ const rl = readline.createInterface({
 rl.prompt();
 
 rl.on("line", (line) => {
-  if (line.trimEnd() == "up") {
-    thermostat.up();
-    console.log(`Temperature is ${thermostat.getTemperature()}`);
-  } else if (line.trimEnd() == "down") {
-    thermostat.down();
-    console.log(`Temperature is ${thermostat.getTemperature()}`);
+  switch (line.trimEnd()) {
+    case "up":
+      console.log(thermostat.up());
+      // console.log(`Temperature is ${thermostat.getTemperature()}`);
+      break;
+    case "down":
+      console.log(thermostat.down());
+      // console.log(`Temperature is ${thermostat.getTemperature()}`);
+      break;
+    case "psm on":
+      thermostat.setPowerSavingMode(true);
+      // console.log(`Temperature  is ${thermostat.getTemperature()}`);
+      break;
+    case "psm off":
+      thermostat.setPowerSavingMode(false);
+      // console.log(`Temperature is ${thermostat.getTemperature()}`);
+      break;
+    case "reset":
+      thermostat.reset();
+      // console.log(`Temperature is ${thermostat.getTemperature()}`);
+      break;
   }
   rl.prompt();
 });
