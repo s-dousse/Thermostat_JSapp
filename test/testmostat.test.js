@@ -23,7 +23,7 @@ describe("Thermostat", () => {
     for (i = 0; i <= 10; i++) {
       thermostat.down();
     }
-    // console.log(thermostat.getTemperature()); // temperature = 10
+
     expect(thermostat.down()).toMatch("sorry you can't go below 10");
   });
 
@@ -41,7 +41,7 @@ describe("Thermostat", () => {
     for (i = 0; i <= 4; i++) {
       thermostat2.up();
     }
-    // console.log(thermostat2.up()); // temperature = 25
+
     expect(thermostat2.up()).toMatch("25 (max reached)");
   });
 
@@ -60,15 +60,33 @@ describe("Thermostat", () => {
     for (i = 0; i <= 5; i++) {
       thermostat2.up();
     }
-    // console.log(thermostat2.up()); // temperature = 32
+
     expect(thermostat2.up()).toMatch("32 (max reached)");
   });
 
-  it("has a reset method that reset the temperature to 20", () => {
-    thermostat.reset();
-    expect(thermostat.getTemperature()).toBe(20);
+  it("returns high-usage if you are over 25", () => {
+    // console.log(thermostat2.getTemperature()); // 32
+    expect(thermostat2.getCurrentEnergyUsage()).toMatch("high-usage");
+  });
 
+  it("has a reset method that reset the temperature to 20", () => {
     thermostat2.reset();
     expect(thermostat2.getTemperature()).toBe(20);
+  });
+
+  it("returns low-usage if you are below 18", () => {
+    for (i = 0; i <= 6; i++) {
+      thermostat2.down();
+    }
+    // console.log(thermostat2.getTemperature()); // 13
+    expect(thermostat2.getCurrentEnergyUsage()).toMatch("low-usage");
+  });
+
+  it("returns medium-usage if you are under or equal to 25", () => {
+    for (i = 0; i <= 6; i++) {
+      thermostat2.up();
+    }
+    // console.log(thermostat2.getTemperature()); // 20
+    expect(thermostat2.getCurrentEnergyUsage()).toMatch("medium-usage");
   });
 });
