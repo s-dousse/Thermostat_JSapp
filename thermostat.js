@@ -1,3 +1,5 @@
+const readline = require("readline");
+
 class Thermostat {
   constructor() {
     this.temperature = 20;
